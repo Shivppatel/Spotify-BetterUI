@@ -18,7 +18,6 @@ function App() {
       spotify.getMe().then(user => {
         console.log('Logged In User Porfile', user);
       })
-
     }
   }, []);
   return (
