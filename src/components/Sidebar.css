@@ -12,9 +12,8 @@
 
 .sidebar__logo {
     object-fit: contain;
-    height: 70px;
-    padding: 5px;
-    padding-left: 30%;
+    height: 50px;
+    padding: 10px;
 }
 
 .sidebar__title {
