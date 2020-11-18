@@ -25,6 +25,11 @@ const reducer = (state, action) => {
                 ...state,
                 playlists: action.playlists,
             }
+        case 'SET_TOP_PLAYLIST':
+            return{
+                ...state,
+                top_playlist: action.top_playlist,
+            }
         default:
             return state;
     }
