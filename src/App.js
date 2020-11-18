@@ -33,7 +33,7 @@ function App() {
           playlists: playlists,
         });
       });
-      spotify.getPlaylist('37i9dQZF1Euz2CYPYGxIMw').then(( response) => {
+      spotify.getPlaylist('37i9dQZF1DX4JAvHpjipBk').then(( response) => {
         dispatch({
           type:'SET_TOP_PLAYLIST',
           top_playlist: response,

@@ -3,8 +3,8 @@ export const initialState = {
     playlists: [],
     playing: false,
     item:null,
-    //Remove After Debuging
     token: null,
+    selected: '37i9dQZF1DX4JAvHpjipBk',
 };
 
 const reducer = (state, action) => {
@@ -29,6 +29,11 @@ const reducer = (state, action) => {
             return{
                 ...state,
                 top_playlist: action.top_playlist,
+            }
+        case 'SET_SELECTED_PLAYLIST':
+            return{
+                ...state,
+                selected: action.selected,
             }
         default:
             return state;
