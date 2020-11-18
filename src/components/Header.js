@@ -1,6 +1,6 @@
 import React from "react";
 import "./Header.css";
-import { useDataLayerValue } from "./DataLayer";
+import { useDataLayerValue } from "../DataLayer";
 import { Avatar } from "@material-ui/core";
 import SearchIcon from "@material-ui/icons/Search";
 

@@ -8,7 +8,7 @@ import RepeatIcon from '@material-ui/icons/Repeat';
 import { Grid, Slider } from "@material-ui/core";
 import PlaylistPlayIcon from '@material-ui/icons/PlaylistPlay';
 import VolumeDownIcon from '@material-ui/icons/VolumeDown';
-import { useDataLayerValue } from "./DataLayer";
+import { useDataLayerValue } from "../DataLayer";
 function Footer() {
     const [{ token, item, playing }, dispatch] = useDataLayerValue();
     return (
