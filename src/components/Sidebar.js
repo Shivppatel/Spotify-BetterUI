@@ -11,7 +11,7 @@ function Sidebar() {
 
     return (
         <div className='sidebar'>
-            <img className="sidebar__logo" src='https://storage.googleapis.com/pr-newsroom-wp/1/2018/11/Spotify_Logo_RGB_Black.png' alt='spotify logo'/>
+            <img className="sidebar__logo" src='https://storage.googleapis.com/pr-newsroom-wp/1/2018/11/Spotify_Logo_RGB_White.png' alt='spotify logo'/>
             < SidebarOption title="Home" Icon={ HomeIcon }/>
             < SidebarOption title="Search" Icon={ SearchIcon }/>
             < SidebarOption title="Your Library" Icon={ LibraryMusicIcon }/>
