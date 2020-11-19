@@ -10,7 +10,11 @@
     color: white;
     align-items: center;
 }
-
+@media screen and (max-width: 750px){
+    .sidebar{
+        display: none;
+    }
+}
 .sidebar__logo {
     object-fit: contain;
     height: 50px;
