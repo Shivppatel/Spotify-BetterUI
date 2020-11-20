@@ -7,9 +7,6 @@
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
-  <a href="https://github.com/Shivppatel/Spotify-BetterUI">
-    <img src="images/logo.jpg" alt="Logo" width="80" height="80">
-  </a>
 
   <h3 align="center">Spotify-BetterUI</h3>
 
@@ -21,7 +18,7 @@
     <br />
     <a href="https://spotify-clone-shivppatel.herokuapp.com/">View Deployed Demo</a>
     ·
-    <a href="https://github.com/Shivppatel/Spotify-BetterUI/issues">Spotify-BetterUIrt Bug</a>
+    <a href="https://github.com/Shivppatel/Spotify-BetterUI/issues">Report Bug</a>
     ·
     <a href="https://github.com/Shivppatel/Spotify-BetterUI/issues">Request Feature</a>
   </p>
