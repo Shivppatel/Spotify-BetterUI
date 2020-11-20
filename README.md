@@ -21,7 +21,7 @@
     <br />
     <a href="https://spotify-clone-shivppatel.herokuapp.com/">View Deployed Demo</a>
     ·
-    <a href="https://github.com/Shivppatel/Spotify-BetterUI/issues">Report Bug</a>
+    <a href="https://github.com/Shivppatel/Spotify-BetterUI/issues">Spotify-BetterUIrt Bug</a>
     ·
     <a href="https://github.com/Shivppatel/Spotify-BetterUI/issues">Request Feature</a>
   </p>
@@ -71,7 +71,7 @@ npm install npm@latest -g
 
 ### Installation
 
-1. Clone the repo
+1. Clone the Spotify-BetterUI
 
 ```sh
 git clone https://github.com/Shivppatel/Spotify-BetterUI.git
@@ -106,16 +106,16 @@ Project Link: [https://github.com/Shivppatel/Spotify-BetterUI](https://github.co
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 
-[contributors-shield]: https://img.shields.io/github/contributors/Shivppatel/repo.svg?style=flat-square
-[contributors-url]: https://github.com/Shivppatel/repo/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/Shivppatel/repo.svg?style=flat-square
-[forks-url]: https://github.com/Shivppatel/repo/network/members
-[stars-shield]: https://img.shields.io/github/stars/Shivppatel/repo.svg?style=flat-square
-[stars-url]: https://github.com/Shivppatel/repo/stargazers
-[issues-shield]: https://img.shields.io/github/issues/Shivppatel/repo.svg?style=flat-square
-[issues-url]: https://github.com/Shivppatel/repo/issues
-[license-shield]: https://img.shields.io/github/license/Shivppatel/repo.svg?style=flat-square
-[license-url]: https://github.com/Shivppatel/repo/blob/master/LICENSE.txt
+[contributors-shield]: https://img.shields.io/github/contributors/Shivppatel/Spotify-BetterUI.svg?style=flat-square
+[contributors-url]: https://github.com/Shivppatel/Spotify-BetterUI/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/Shivppatel/Spotify-BetterUI.svg?style=flat-square
+[forks-url]: https://github.com/Shivppatel/Spotify-BetterUI/network/members
+[stars-shield]: https://img.shields.io/github/stars/Shivppatel/Spotify-BetterUI.svg?style=flat-square
+[stars-url]: https://github.com/Shivppatel/Spotify-BetterUI/stargazers
+[issues-shield]: https://img.shields.io/github/issues/Shivppatel/Spotify-BetterUI.svg?style=flat-square
+[issues-url]: https://github.com/Shivppatel/Spotify-BetterUI/issues
+[license-shield]: https://img.shields.io/github/license/Shivppatel/Spotify-BetterUI.svg?style=flat-square
+[license-url]: https://github.com/Shivppatel/Spotify-BetterUI/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=flat-square&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/Shivppatel
 [product-screenshot]: images/screenshot.png
