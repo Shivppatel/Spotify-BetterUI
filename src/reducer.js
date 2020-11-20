@@ -1,5 +1,3 @@
-import { FlareSharp } from "@material-ui/icons";
-
 export const initialState = {
     user:null,
     playlists: [],
