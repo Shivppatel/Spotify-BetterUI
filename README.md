@@ -8,7 +8,7 @@
 <br />
 <p align="center">
   <a href="https://github.com/Shivppatel/Spotify-BetterUI">
-    <img src="images/logo.jpg" alt="Logo" width="500" height="250">
+    <img src="images/logo1.jpg" alt="Logo" width="500" height="250">
   </a>
 
   <h3 align="center">Spotify-BetterUI</h3>
