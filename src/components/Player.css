@@ -1,12 +1,18 @@
+.mobile_sideBar{
+    display: none;
+}
+
 .player__body {
     display: flex;
 }
-
 @media screen and (max-width: 750px){
     .player{
-        width: 100vw;
+        width: 100%;
     }
-    .player__body {
-        display: inline-block;
+    .mobile_sideBar{
+        display: flex;
+    }
+    .sidebar{
+        display: none;
     }
 }

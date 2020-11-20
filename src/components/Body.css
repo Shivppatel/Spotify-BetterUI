@@ -7,8 +7,11 @@
     flex: 0.8;
     overflow-y: scroll;
 }
-.body::-webkit-scrollbar {
-    display: none;
+
+@media screen and (max-width: 750px){
+    .body{
+        flex: 0.95;
+    }
 }
 
 .body__info {
