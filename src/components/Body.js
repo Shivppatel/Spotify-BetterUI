@@ -8,7 +8,7 @@ import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
 import SongRow from './SongRow'
 
 function Body({ spotify}) {
-    const [{top_playlist }] = useDataLayerValue();
+    const [{top_playlist}, dispatch] = useDataLayerValue();
 
     if(top_playlist?.tracks?.items[0]?.added_at !== undefined){
     return (

@@ -1,6 +1,7 @@
-import React from 'react';
+import {React, useState} from 'react';
 import './Footer.css'
 import PlayCircleOutlineIcon from '@material-ui/icons/PlayCircleOutline';
+import PauseCircleFilledIcon from '@material-ui/icons/PauseCircleFilled';
 import SkipPreviousIcon from '@material-ui/icons/SkipPrevious';
 import SkipNextIcon from '@material-ui/icons/SkipNext';
 import ShuffleIcon from '@material-ui/icons/Shuffle';
@@ -13,44 +14,79 @@ import SpotifyWebApi from 'spotify-web-api-js';
 const spotify = new SpotifyWebApi();
 
 function Footer() {
-    const [{ token, item, playing }, dispatch] = useDataLayerValue();
+    const [{ token, item, playing, currentState }, dispatch] = useDataLayerValue();
+
     function sleep(ms) {
       return new Promise(resolve => setTimeout(resolve, ms));
     }
 
     function Suffle(){
-      spotify.setShuffle();
+      spotify.getMyCurrentPlaybackState().then((response) => {
+        if(response.shuffle_state === false){
+          spotify.setShuffle(true);
+        } else {
+          spotify.setShuffle(false);
+        }
+      })
+      updatePlaying();
+      
 
     };
     async function SkipPrev(){
       spotify.skipToPrevious();
-      await sleep(500);
       updatePlaying();
 
     };
-    function Play(){
-      const link = playing.uri;
-      spotify.play(link);
+    async function Play(){
+      if(currentState===undefined || currentState===false){
+        spotify.play(item?.uri).catch(e => {
+          console.log('Already Playing!');
+        })
+      }
+      updatePlaying();
+    };
+ 
+    async function Pause(){
+      if(currentState === true ){
+        spotify.pause(playing).catch(e => {
+          console.log('Already Paused!');
+          updatePlaying();
+        })
+      }
+      updatePlaying();
     };
     async function SkipNext(){
       spotify.skipToNext();
-      await sleep(500);
       updatePlaying();
       
 
     };
     function Repeat(){
-      spotify.setRepeat();
-
+      spotify.getMyCurrentPlaybackState().then((response) => {
+        if(response.repeat_state === 'off'){
+          spotify.setRepeat('track');
+        } else {
+          spotify.setRepeat('off');
+        }
+      })
+      updatePlaying();
     };
-    function updatePlaying(){
-      spotify.getMyCurrentPlayingTrack().then((response) => {
+    async function updatePlaying(){
+      await sleep(1000);
+      spotify.getMyCurrentPlaybackState().then((response) => {
+        console.log(response.is_playing);
         dispatch({
           type:'SET_PLAYING',
           playing: response,
+          currentState: response.is_playing,
         })
-      })
-    }
+        })
+      
+    };
+
+    function handleSliderChange(input_value){
+      
+    };
 
     return (
       <div className='footer' time>
@@ -75,7 +111,7 @@ function Footer() {
             <div className="footer__middle">
                 <ShuffleIcon className="footer__green" onClick={Suffle}/>
                 <SkipPreviousIcon className="footer__icon" onClick={SkipPrev}/>
-                <PlayCircleOutlineIcon fontSize="large" className="footer__icon" onClick={Play}/>
+                {currentState!==true? (< PlayCircleOutlineIcon fontSize="large" className="footer__icon" onClick={Play}/>) : (< PauseCircleFilledIcon fontSize="large" className="footer__icon" onClick={Pause}/>)}
                 <SkipNextIcon className="footer__icon" onClick={SkipNext}/>
                 <RepeatIcon className="footer__green" onClick={Repeat}/>
             </div>
@@ -88,7 +124,10 @@ function Footer() {
                         <VolumeDownIcon />
                     </Grid>
                     <Grid item xs>
-                        <Slider />
+                        <Slider 
+                            getAriaValueText={((value) => {handleSliderChange(value);})}
+                            aria-labelledby="input-slider"
+                        />
                     </Grid>
                 </Grid>
             </div>

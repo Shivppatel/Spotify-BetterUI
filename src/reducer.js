@@ -1,3 +1,5 @@
+import { FlareSharp } from "@material-ui/icons";
+
 export const initialState = {
     user:null,
     playlists: [],
@@ -5,6 +7,7 @@ export const initialState = {
     item:null,
     token: null,
     selected: '37i9dQZF1DX4JAvHpjipBk',
+    currentState: false,
 };
 
 const reducer = (state, action) => {
@@ -39,6 +42,7 @@ const reducer = (state, action) => {
             return {
                 ...state,
                 playing: action.playing,
+                currentState: action.currentState,
             }
         default:
             return state;
