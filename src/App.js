@@ -1,4 +1,4 @@
-import React, { useEffect, useState} from "react";
+import React, { useEffect} from "react";
 import Login from './components/Login';
 import Player from './components/Player';
 import { getTokenFromURL } from './spotify';
@@ -6,7 +6,7 @@ import SpotifyWebApi from 'spotify-web-api-js';
 import { useDataLayerValue } from './DataLayer';
 const spotify = new SpotifyWebApi();
 function App() {
-  const [{ user, token}, dispatch] = useDataLayerValue();
+  const [{ token}, dispatch] = useDataLayerValue();
 
   useEffect(() => {
     const hash = getTokenFromURL();
@@ -38,8 +38,14 @@ function App() {
           top_playlist: response,
         });
       });
+      spotify.getMyCurrentPlayingTrack().then((response) => {
+        dispatch({
+          type:'SET_PLAYING',
+          playing: response,
+        });
+      });      
     }
-  }, []);
+  }, );
 
   return (
     <div className="app">

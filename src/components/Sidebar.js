@@ -8,7 +8,7 @@ import { useDataLayerValue } from '../DataLayer';
 
 
 function Sidebar() {
-    const [{playlists, selected}, dispatch] = useDataLayerValue();    
+    const [{playlists, selected}] = useDataLayerValue();    
     return (
         <div className='sidebar'>
             <img className="sidebar__logo" src='https://storage.googleapis.com/pr-newsroom-wp/1/2018/11/Spotify_Logo_RGB_White.png' alt='spotify logo'/>
@@ -16,10 +16,10 @@ function Sidebar() {
             < SidebarOption title="Search" Icon={ SearchIcon }/>
             < SidebarOption title="Your Library" Icon={ LibraryMusicIcon }/>
             <br/>
-            <stong className="sidebar__title">PLAYLISTS</stong>
+            <p className="sidebar__title">PLAYLISTS</p>
             < hr/>
             {playlists?.items?.map( playlist=> (
-                <SidebarOption title={playlist.name} id={playlist.id}/>
+                <SidebarOption key={playlist.id} title={playlist.name} id={playlist.id}/>
                 ))}
         </div>
     )

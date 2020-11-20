@@ -1,8 +1,9 @@
 .sidebar {
     padding-top: 10px;
     height: 100vh;
-    flex: 0.2;
+    flex: 0.1;
     min-width: 200px;
+    max-width: 300px;
     padding-left: 10px;
     padding-right: 10px;
     background-color: #89d4cf;

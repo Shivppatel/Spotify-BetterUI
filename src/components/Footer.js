@@ -9,20 +9,61 @@ import { Grid, Slider } from "@material-ui/core";
 import PlaylistPlayIcon from '@material-ui/icons/PlaylistPlay';
 import VolumeDownIcon from '@material-ui/icons/VolumeDown';
 import { useDataLayerValue } from "../DataLayer";
+import SpotifyWebApi from 'spotify-web-api-js';
+const spotify = new SpotifyWebApi();
+
 function Footer() {
     const [{ token, item, playing }, dispatch] = useDataLayerValue();
+    function sleep(ms) {
+      return new Promise(resolve => setTimeout(resolve, ms));
+    }
+
+    function Suffle(){
+      spotify.setShuffle();
+
+    };
+    async function SkipPrev(){
+      spotify.skipToPrevious();
+      await sleep(500);
+      updatePlaying();
+
+    };
+    function Play(){
+      const link = playing.uri;
+      spotify.play(link);
+    };
+    async function SkipNext(){
+      spotify.skipToNext();
+      await sleep(500);
+      updatePlaying();
+      
+
+    };
+    function Repeat(){
+      spotify.setRepeat();
+
+    };
+    function updatePlaying(){
+      spotify.getMyCurrentPlayingTrack().then((response) => {
+        dispatch({
+          type:'SET_PLAYING',
+          playing: response,
+        })
+      })
+    }
+
     return (
-        <div className='footer'>
+      <div className='footer' time>
       <div className="footer__left">
         <img
           className="footer__albumLogo"
-          src={item?.album.images[0].url}
-          alt={item?.name}
+          src={playing.item?.album.images[0].url}
+          alt={playing.item?.name}
         />
-        {item ? (
+        {playing ? (
           <div className="footer__songInfo">
-            <h4>{item.name}</h4>
-            <p>{item.artists.map((artist) => artist.name).join(", ")}</p>
+            <h4>{playing.item.name}</h4>
+            <p>{playing.item.artists.map((artist) => artist.name).join(", ")}</p>
           </div>
         ) : (
           <div className="footer__songInfo">
@@ -32,11 +73,11 @@ function Footer() {
         )}
       </div>
             <div className="footer__middle">
-                <ShuffleIcon className="footer__green"/>
-                <SkipPreviousIcon className="footer__icon"/>
-                <PlayCircleOutlineIcon fontSize="large" className="footer__icon"/>
-                <SkipNextIcon className="footer__icon"/>
-                <RepeatIcon className="footer__green"/>
+                <ShuffleIcon className="footer__green" onClick={Suffle}/>
+                <SkipPreviousIcon className="footer__icon" onClick={SkipPrev}/>
+                <PlayCircleOutlineIcon fontSize="large" className="footer__icon" onClick={Play}/>
+                <SkipNextIcon className="footer__icon" onClick={SkipNext}/>
+                <RepeatIcon className="footer__green" onClick={Repeat}/>
             </div>
             <div className="footer__right">
                 <Grid container spacing={2}>

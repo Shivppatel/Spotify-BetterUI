@@ -35,6 +35,11 @@ const reducer = (state, action) => {
                 ...state,
                 selected: action.selected,
             }
+        case 'SET_PLAYING':
+            return {
+                ...state,
+                playing: action.playing,
+            }
         default:
             return state;
     }

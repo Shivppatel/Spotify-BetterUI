@@ -7,7 +7,7 @@ const spotify = new SpotifyWebApi();
 function SidebarOption({ title, Icon, id}) {
     const [{token, top_playlist }, dispatch] = useDataLayerValue();
 
-    function handleClick(e){
+    function handlePlaylistClick(e){
         e.preventDefault();
         spotify.getPlaylist(id).then(( response) => {
             if(response.images.length > 0){
@@ -19,7 +19,7 @@ function SidebarOption({ title, Icon, id}) {
         
     }
     return (
-        <div className="sidebarOption"onClick={handleClick} >
+        <div className="sidebarOption"onClick={handlePlaylistClick} >
             {Icon && <Icon className="sidebarOpion__icon" />}
             {Icon ? <h4>{ title }</h4> : <p>{ title }</p>}
         </div>
