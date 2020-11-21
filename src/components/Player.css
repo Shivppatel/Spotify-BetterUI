@@ -1,3 +1,7 @@
+.player{
+    min-width: 500px;
+    overflow-y: overlay;
+}
 .mobile_sideBar{
     display: none;
 }
