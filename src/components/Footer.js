@@ -120,8 +120,7 @@ function Footer() {
                         <VolumeDownIcon />
                     </Grid>
                     <Grid item xs>
-                        <Slider 
-                            getAriaValueText={((value) => {handleSliderChange(value);})}
+                        <Slider
                             aria-labelledby="input-slider"
                             disabled='true'
                         />
