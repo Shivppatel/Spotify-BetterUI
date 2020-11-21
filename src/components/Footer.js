@@ -84,10 +84,6 @@ function Footer() {
       
     };
 
-    function handleSliderChange(input_value){
-      
-    };
-
     return (
       <div className='footer' time>
       <div className="footer__left">
@@ -127,6 +123,7 @@ function Footer() {
                         <Slider 
                             getAriaValueText={((value) => {handleSliderChange(value);})}
                             aria-labelledby="input-slider"
+                            disabled='true'
                         />
                     </Grid>
                 </Grid>
