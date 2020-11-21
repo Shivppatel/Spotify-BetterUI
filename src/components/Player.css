@@ -1,13 +1,11 @@
-.player{
-    min-width: 500px;
-    overflow-y: overlay;
-}
 .mobile_sideBar{
     display: none;
 }
 
 .player__body {
     display: flex;
+    min-width: 500px;
+    overflow-y: overlay;
 }
 @media screen and (max-width: 750px){
     .player{
