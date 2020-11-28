@@ -34,17 +34,7 @@ function Body({ client }) {
     }
     updatePlaying();
   };
-
-  function PlaySong() {
-    if (currentState === true) {
-      spotify.pause().catch(e => {
-        console.log('Already Paused!');
-        spotify.play();
-      })
-    }
-    updatePlaying();
-  };
-
+  
   function setTopPlaylist(id) {
     spotify.getPlaylist(id).then((response) => {
       dispatch({
@@ -89,11 +79,11 @@ function Body({ client }) {
                 </div>
       </div>
     )
-  } else if (top_playlist) {
+  } else if (top_playlist?.map) {
     return (
       <div className="body__home">
         <Header />
-        {top_playlist.map(playlist => (
+        {top_playlist?.map(playlist => (
           <div className="body__info" onClick={() => setTopPlaylist(playlist.id)}>
             <img src={playlist?.images[0].url} alt="" />
             <div className="body__infoText">
