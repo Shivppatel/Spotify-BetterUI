@@ -1,83 +1,104 @@
 .body {
-    background-color: #89d4cf;
-    background-image: linear-gradient(315deg, #89d4cf 0%, #6e45e1 74%);
-    height: 100vh;
-    color: white;
-    padding: 50px 100px;
-    flex: 0.9;
-    overflow-y: scroll;
+  background-color: #89d4cf;
+  background-image: linear-gradient(315deg, #89d4cf 0%, #6e45e1 74%);
+  height: 100vh;
+  color: white;
+  padding: 50px 100px;
+  flex: 0.9;
+  overflow-y: scroll;
 }
 .body__home {
-    background-color: #89d4cf;
-    background-image: linear-gradient(315deg, #89d4cf 0%, #6e45e1 74%);
-    height: 100vh;
-    color: white;
-    padding: 20px;
-    flex: 0.9;
-    overflow-y: scroll;
+  background-color: #89d4cf;
+  background-image: linear-gradient(315deg, #89d4cf 0%, #6e45e1 74%);
+  height: 100vh;
+  color: white;
+  padding: 20px;
+  flex: 0.9;
+  overflow-y: scroll;
+}
+.body__song{
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.body__song_icon{
+  padding: 10px;
+}
+.songRow__favorite_false{
+  margin-right: 10px;
+}
+.songRow__favorite_true{
+  margin-right: 10px;
+}
+.songRow__info{
+  width: 500px;
 }
 
-@media screen and (max-width: 750px){
-    .body{
-        flex: 1;
-        padding: 50px;
-    }
-    img{
-        height: 25px;
-    }
+.songRow__favorite_true {
+  color: red;
+}
+.songRow__favorite_false:hover,
+.songRow__queue:hover {
+  transition: transform 0.2s ease-in-out;
+  transform: scale(1.2) !important;
+}
+
+@media screen and (max-width: 750px) {
+  .body {
+    flex: 1;
+    padding: 50px;
+  }
+  img {
+    height: 25px;
+  }
 }
 
 .body__info {
-    display: flex;
-    align-items: flex-end;
-    padding: 10px;
+  display: flex;
+  align-items: flex-end;
+  padding: 10px;
 }
 
-.body__info > img{
-    height: 20vh;
-    margin: 0 20px;
-    box-shadow: 0 4px 60px rgba(0,0,0,0.5);
+.body__info > img {
+  height: 20vh;
+  margin: 0 20px;
+  box-shadow: 0 4px 60px rgba(0, 0, 0, 0.5);
 }
 
-.body__infoText{
-    flex: 1;
-
+.body__infoText {
+  flex: 1;
 }
 
-
-.body__infoText > h2{
-    font-size: 48px;
-    margin-bottom: 10px;
-    
+.body__infoText > h2 {
+  font-size: 48px;
+  margin-bottom: 10px;
 }
 
-
-.body__infoText > p{
-    font-size: 14px;
-    
+.body__infoText > p {
+  font-size: 14px;
 }
 
 .body__songs {
-    margin: 20px -30px;
+  margin: 20px -30px;
 }
 
 .body__icons {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 
-.body__icons > .MuiSvgIcon-root{
-    margin-right: 20px;
+.body__icons > .MuiSvgIcon-root {
+  margin-right: 20px;
 }
 
 .body__suffle {
-    font-size: 80px !important;
-    margin-left: 50px;
-    margin-top:20px;
-    margin-bottom: 20px;
+  font-size: 80px !important;
+  margin-left: 50px;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 .body__suffle:hover {
-    transition: 100ms transform ease-in;
-    transform: scale(1.08);
+  transition: 100ms transform ease-in;
+  transform: scale(1.08);
 }
