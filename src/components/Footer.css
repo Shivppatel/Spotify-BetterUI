@@ -47,12 +47,24 @@
     padding-right: 20px;
 
 }
-
+.footer__songInfo{
+    margin: auto;
+}
 .footer__albumLogo {
     height: 60px;
     width: 60px;
     margin-right: 20px;
+    margin-left: 20px;
     object-fit: contain;
+}
+.footer__songFavorite_false{
+    margin-left: 20px;
+    color: #6E45E1;
+}
+
+.footer__songFavorite_true{
+    margin-left: 20px;
+    color: red;
 }
 
 .footer__green_false {

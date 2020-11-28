@@ -9,7 +9,9 @@ const scopes = [
     "user-read-recently-played",
     "user-read-playback-state",
     "user-top-read",
-    "user-modify-playback-state"
+    "user-library-read",
+    "user-modify-playback-state",
+    "user-library-modify",
 ]
 export const getTokenFromURL = () => {
     return window.location.hash.substring(1).split('&').reduce((initial, item) => {

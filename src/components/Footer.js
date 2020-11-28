@@ -3,6 +3,7 @@ import './Footer.css'
 import PlayCircleOutlineIcon from '@material-ui/icons/PlayCircleOutline';
 import PauseCircleFilledIcon from '@material-ui/icons/PauseCircleFilled';
 import SkipPreviousIcon from '@material-ui/icons/SkipPrevious';
+import FavoriteIcon from '@material-ui/icons/Favorite';
 import SkipNextIcon from '@material-ui/icons/SkipNext';
 import ShuffleIcon from '@material-ui/icons/Shuffle';
 import RepeatIcon from '@material-ui/icons/Repeat';
@@ -17,6 +18,7 @@ function Footer() {
     const [{item, playing, currentState }, dispatch] = useDataLayerValue();
     const [suffle, setShuffle] = useState(false);
     const [replay, setReplay] = useState(false);
+    const [favorite, setFavorite] = useState(false);
 
     function sleep(ms) {
       return new Promise(resolve => setTimeout(resolve, ms));
@@ -50,7 +52,6 @@ function Footer() {
       if(currentState === true ){
         spotify.pause(playing).catch(e => {
           console.log('Already Paused!');
-          updatePlaying();
         })
       }
       updatePlaying();
@@ -74,7 +75,6 @@ function Footer() {
     async function updatePlaying(){
       await sleep(1000);
       spotify.getMyCurrentPlaybackState().then((response) => {
-        console.log(response.is_playing);
         dispatch({
           type:'SET_PLAYING',
           playing: response,
@@ -87,12 +87,34 @@ function Footer() {
           setReplay(true);
         }
         })
-        
+        getFavoriteStatus();
+    };
+
+     function Favorite(){
+      if(favorite){
+        spotify.removeFromMySavedTracks([playing.item.id]);
+      } else {
+        spotify.addToMySavedTracks([playing.item.id]);
+      }
+      getFavoriteStatus();
+    }
+
+    function getFavoriteStatus(){
+      spotify.containsMySavedTracks([playing.item.id]).then((response) => {
+        if(response[0]===false){
+          setFavorite(false);
+        } else {
+          setFavorite(true);
+        }
+      })
     };
 
     return (
       <div className='footer' time>
       <div className="footer__left">
+         <div>
+            <FavoriteIcon className={"footer__songFavorite_"+favorite} onClick={Favorite}/>
+          </div>
         <img
           className="footer__albumLogo"
           src={playing.item?.album.images[0].url}
