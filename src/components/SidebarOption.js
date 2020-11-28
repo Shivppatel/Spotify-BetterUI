@@ -4,19 +4,33 @@ import SpotifyWebApi from 'spotify-web-api-js';
 import { useDataLayerValue } from '../DataLayer';
 const spotify = new SpotifyWebApi();
 
-function SidebarOption({ title, Icon, id}) {
-    const [{token, top_playlist }, dispatch] = useDataLayerValue();
+function SidebarOption({ title, Icon, id, type}) {
+    const [{top_playlist }, dispatch] = useDataLayerValue();
 
     function handlePlaylistClick(e){
         e.preventDefault();
-        spotify.getPlaylist(id).then(( response) => {
-            if(response.images.length > 0){
+        if(type === 'id'){
+                spotify.getPlaylist(id).then(( response) => {
+                if(response.images.length > 0){
+                    dispatch({
+                    type:'SET_TOP_PLAYLIST',
+                    top_playlist: response,
+                    });}
+                });     
+        } else if(type==='home'){
+            spotify.getFeaturedPlaylists().then((respone) => {
+                console.log((respone['playlists']['items']));
                 dispatch({
+                    type:'SET_TOP_PLAYLIST',
+                    top_playlist: respone['playlists']['items'],
+                    });
+                })
+        } else if(type==='search'){
+            dispatch({
                 type:'SET_TOP_PLAYLIST',
-                top_playlist: response,
-                });}
-            });
-        
+                top_playlist: null,
+                });
+        }
     }
     return (
         <div className="sidebarOption"onClick={handlePlaylistClick} >
