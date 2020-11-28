@@ -14,24 +14,24 @@ import SpotifyWebApi from 'spotify-web-api-js';
 const spotify = new SpotifyWebApi();
 
 function Footer() {
-    const [{ token, item, playing, currentState }, dispatch] = useDataLayerValue();
+    const [{item, playing, currentState }, dispatch] = useDataLayerValue();
+    const [suffle, setShuffle] = useState(false);
+    const [replay, setReplay] = useState(false);
 
     function sleep(ms) {
       return new Promise(resolve => setTimeout(resolve, ms));
     }
 
     function Suffle(){
-      spotify.getMyCurrentPlaybackState().then((response) => {
-        if(response.shuffle_state === false){
-          spotify.setShuffle(true);
-        } else {
-          spotify.setShuffle(false);
-        }
-      })
-      updatePlaying();
-      
-
+      if({suffle}['suffle']){
+        spotify.setShuffle(false);
+        setShuffle(!suffle);
+      } else {
+        spotify.setShuffle(true);
+        setShuffle(!suffle);
+      }
     };
+
     async function SkipPrev(){
       spotify.skipToPrevious();
       updatePlaying();
@@ -62,15 +62,15 @@ function Footer() {
 
     };
     function Repeat(){
-      spotify.getMyCurrentPlaybackState().then((response) => {
-        if(response.repeat_state === 'off'){
-          spotify.setRepeat('track');
-        } else {
-          spotify.setRepeat('off');
-        }
-      })
-      updatePlaying();
+      if({replay}['replay']){
+        spotify.setRepeat('off');
+        setReplay(!replay);
+      } else {
+        spotify.setRepeat('track');
+        setReplay(!replay);
+      }
     };
+
     async function updatePlaying(){
       await sleep(1000);
       spotify.getMyCurrentPlaybackState().then((response) => {
@@ -80,8 +80,14 @@ function Footer() {
           playing: response,
           currentState: response.is_playing,
         })
+        setShuffle(response);
+        if(response.repeat_state === 'off'){
+          setReplay(false);
+        } else {
+          setReplay(true);
+        }
         })
-      
+        
     };
 
     return (
@@ -105,11 +111,11 @@ function Footer() {
         )}
       </div>
             <div className="footer__middle">
-                <ShuffleIcon className="footer__green" onClick={Suffle}/>
+                <ShuffleIcon className={'footer__green_'+suffle} onClick={Suffle}/>
                 <SkipPreviousIcon className="footer__icon" onClick={SkipPrev}/>
                 {currentState!==true? (< PlayCircleOutlineIcon fontSize="large" className="footer__icon" onClick={Play}/>) : (< PauseCircleFilledIcon fontSize="large" className="footer__icon" onClick={Pause}/>)}
                 <SkipNextIcon className="footer__icon" onClick={SkipNext}/>
-                <RepeatIcon className="footer__green" onClick={Repeat}/>
+                <RepeatIcon className={'footer__green_'+replay} onClick={Repeat}/>
             </div>
             <div className="footer__right">
                 <Grid container spacing={2}>

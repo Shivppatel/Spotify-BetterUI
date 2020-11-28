@@ -17,7 +17,7 @@ function Body({ client}) {
         return new Promise(resolve => setTimeout(resolve, ms));
     }
 
-    async function Play(){
+    function Play(){
         if(currentState===undefined || currentState===false){
           spotify.play(playing).catch(e => {
             console.log('Already Playing!');
@@ -25,8 +25,9 @@ function Body({ client}) {
         }
         updatePlaying();
       };
+
    
-      async function Pause(){
+    function Pause(){
         if(currentState === true ){
           spotify.pause().catch(e => {
             console.log('Already Paused!');
@@ -35,6 +36,16 @@ function Body({ client}) {
         }
         updatePlaying();
       };
+    
+    function PlaySong(){
+      if(currentState === true ){
+          spotify.pause().catch(e => {
+          console.log('Already Paused!');
+          spotify.play();
+        })
+      }
+      updatePlaying();
+    };
 
       async function updatePlaying(){
         await sleep(1000);
@@ -68,7 +79,7 @@ function Body({ client}) {
                         <MoreHorizIcon />
                     </div>
                     {top_playlist?.tracks.items.map((item) => (
-                        <SongRow track={item.track} key={item.track.name}/>
+                        <SongRow track={item.track} key={item}/>
                     ))};
                 </div>
             </div>
@@ -79,11 +90,11 @@ function Body({ client}) {
                 <Header/>
             <div className="body__songs">
                     {top_playlist?.tracks.items.map((item) => (
-                        <SongRow track={item} key={item.uri}/>
+                        <SongRow track={item} onClick={PlaySong(item.uri)}/>
                     ))};
                 </div>   
                 
             </div>)
-    }}
+    }};
 
 export default Body

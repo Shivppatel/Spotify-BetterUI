@@ -55,11 +55,15 @@
     object-fit: contain;
 }
 
-.footer__green {
+.footer__green_false {
     color: grey;
 }
+.footer__green_true {
+    color: #6E45E1;
+    transform: scale(1.2)
+}
 
-.footer__green:hover, .footer__icon:hover {
+.footer__green_false:hover, .footer__icon:hover {
     transition: transform 0.2s ease-in-out;
     transform: scale(1.2) !important;
     color: #6E45E1;
