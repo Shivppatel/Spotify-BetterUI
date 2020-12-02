@@ -43,7 +43,7 @@
 
 ## About The Project
 
-I got the inspiration for this project when I switched form apple music to spotify and realized that the spotify theme is quite bland in my opinion. The goal for this project was for me to create a version of spotify with a beautiful UI and to learn React in the process.
+I got the inspiration for this project after seeing how spotify bland theme is in my opinion. The goal for this project was for me to create a version of spotify with a beautiful UI and to learn React in the process.
 [![Product Name Screen Shot][product-screenshot]](https://spotify-clone-shivppatel.herokuapp.com/)
 
 ### Built With
