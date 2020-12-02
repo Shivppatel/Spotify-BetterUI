@@ -5,7 +5,7 @@
 .player__body {
     display: flex;
     min-width: 500px;
-    overflow-y: overlay;
+    overflow-y: hidden;
 }
 @media screen and (max-width: 750px){
     .player{

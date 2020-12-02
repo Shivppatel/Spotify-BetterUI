@@ -6,13 +6,14 @@
   padding: 50px 100px;
   flex: 0.9;
   overflow-y: scroll;
+  padding-bottom: 50px;
 }
 .body__home {
   background-color: #89d4cf;
   background-image: linear-gradient(315deg, #89d4cf 0%, #6e45e1 74%);
   height: 100vh;
   color: white;
-  padding: 20px;
+  padding: 50px 100px;
   flex: 0.9;
   overflow-y: scroll;
 }
@@ -55,18 +56,10 @@
 
 .body__info {
   display: flex;
-  align-items: flex-end;
-  padding: 10px;
+  align-items: center;
 }
-
-.body__info > img {
-  height: 20vh;
-  margin: 0 20px;
-  box-shadow: 0 4px 60px rgba(0, 0, 0, 0.5);
-}
-
 .body__infoText {
-  flex: 1;
+  flex: .8;
 }
 
 .body__infoText > h2 {
@@ -77,6 +70,30 @@
 .body__infoText > p {
   font-size: 14px;
 }
+@media screen and (max-width: 550px){
+  .body__infoText > h2 {
+    font-size: 38px;
+    margin-bottom: 10px;
+  }
+  
+  .body__infoText > p {
+    font-size: 14px;
+  }
+}
+@media screen and (min-width: 1239px){
+  .body__info{
+    padding: 50px 100px;
+  }
+}
+
+
+.body__info > img {
+  height: 20vh;
+  margin: 0 20px;
+  box-shadow: 0 4px 60px rgba(0, 0, 0, 0.5);
+}
+
+
 
 .body__songs {
   margin: 20px -30px;
