@@ -1,4 +1,4 @@
-import { React, useState } from 'react';
+import { React } from 'react';
 import { useDataLayerValue } from '../DataLayer';
 import './Body.css';
 import Header from './Header';
@@ -6,44 +6,11 @@ import PlayCircleFilledIcon from '@material-ui/icons/PlayCircleFilled';
 import PauseCircleFilledIcon from '@material-ui/icons/PauseCircleFilled';
 import SongRow from './SongRow'
 import SpotifyWebApi from 'spotify-web-api-js';
-import FavoriteIcon from '@material-ui/icons/Favorite';
-import PlaylistPlayIcon from '@material-ui/icons/PlaylistPlay';
 
 const spotify = new SpotifyWebApi();
 
 function Body({ client }) {
-  const [{ top_playlist, currentState, playing }, dispatch] = useDataLayerValue();
-  const [isPlaying, setPlaying] = useState(false);
-  const [favorite, setFavorite] = useState(false);
-
-  function Favorite(track) {
-    if(track?.id){
-      if (favorite) {
-          spotify.removeFromMySavedTracks([track.id]);
-      } else {
-          spotify.addToMySavedTracks([track.id]);
-      }
-      getFavoriteStatus(track);
-    }
-  }
-
-  function getFavoriteStatus(track) {
-    if(track?.id){
-      spotify.containsMySavedTracks([track.id]).then((response) => {
-          if (response[0] === false) {
-              setFavorite(false);
-          } else {
-              setFavorite(true);
-          }
-      })
-    }
-  };
-
-  function addToQueue(track) {
-    if(track?.uri){
-      spotify.queue(track.uri);
-    }
-  }
+  const [{ top_playlist, currentState }, dispatch] = useDataLayerValue();
 
   function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
@@ -57,23 +24,6 @@ function Body({ client }) {
     updatePlaying();
   };
 
-  function PlaySong(song) {
-    Pause();
-    spotify.play({uris: [song]}).catch(e => {
-      console.log(e);
-    }) 
-    updatePlaying();
-  };
-
-  function Pause() {
-    if (isPlaying === true) {
-      spotify.pause().catch(e => {
-        console.log('Already Paused!');
-        updatePlaying();
-      })
-    }
-    updatePlaying();
-  };
 
   function setTopPlaylist(id) {
     spotify.getPlaylist(id).then((response) => {
@@ -83,6 +33,12 @@ function Body({ client }) {
       });
     });
   }
+  function Pause() {
+    spotify.pause().catch(e => {
+      console.log('Already Paused!');
+    })
+    updatePlaying();
+  };
 
   async function updatePlaying() {
     await sleep(1000);
@@ -92,11 +48,6 @@ function Body({ client }) {
         playing: response,
         currentState: response.is_playing,
       })
-      if(response.is_playing && response.uri === playing.uri){
-        setPlaying(true);
-      } else {
-        setPlaying(false);
-      }
     })
 
   };
@@ -119,12 +70,8 @@ function Body({ client }) {
         <div className="body__songs">
           {top_playlist?.tracks.items.map((item) => (
           <div  className="body__song">
-            <div className="body__song_icon">
-              <FavoriteIcon className={"songRow__favorite_" + favorite} onClick={()=>Favorite(item.track)} />
-              <PlaylistPlayIcon className="songRow__queue" onClick={()=>addToQueue(item.track)} />
-            </div>
-            <div className="songRow__info" onClick={()=> PlaySong(item.track.uri)}>
-              <SongRow track={item.track}/>
+            <div className="songRow__info">
+              <SongRow track={item.track} key={item.track}/>
             </div>
           </div>
           ))};
@@ -159,12 +106,8 @@ function Body({ client }) {
         <div className="body__songs">
           {top_playlist?.tracks.items.map((item) => (
             <div  className="body__song">
-            <div className="body__song_icon">
-              <FavoriteIcon className={"songRow__favorite_" + favorite} onClick={()=>Favorite(item)} />
-              <PlaylistPlayIcon className="songRow__queue" onClick={()=>addToQueue(item)} />
-            </div>
-            <div className="songRow__info" onClick={()=> PlaySong(item.uri)}>
-            <SongRow track={item}/>
+            <div className="songRow__info">
+            <SongRow track={item}key={item.track}/>
             </div>
             </div>
           ))}

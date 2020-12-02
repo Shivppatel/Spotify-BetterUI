@@ -46,7 +46,7 @@ function Footer() {
       spotify.play({context_uri:item?.uri}).catch(e => {
         console.log('No Active Devices');
       })
-    }
+    }     
     updatePlaying();
   };
 

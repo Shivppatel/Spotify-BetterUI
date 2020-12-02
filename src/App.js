@@ -43,7 +43,10 @@ function App() {
           type:'SET_PLAYING',
           playing: response,
         });
-      });      
+      });
+      spotify.getAudioAnalysisForTrack().then((response) => {
+        console.log(response);
+      })      
     }
   }, );
 
