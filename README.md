@@ -19,7 +19,7 @@
     <a href="https://github.com/Shivppatel/Spotify-BetterUI"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://spotify-clone-shivppatel.herokuapp.com/">View Deployed Demo</a>
+    <a href="https://spotify-betterui.netlify.app/">View Deployed Demo</a>
     ·
     <a href="https://github.com/Shivppatel/Spotify-BetterUI/issues">Report Bug</a>
     ·
@@ -44,7 +44,7 @@
 ## About The Project
 
 I got the inspiration for this project after seeing how spotify bland theme is in my opinion. The goal for this project was for me to create a version of spotify with a beautiful UI and to learn React in the process.
-[![Product Name Screen Shot][product-screenshot]](https://spotify-clone-shivppatel.herokuapp.com/)
+[![Product Name Screen Shot][product-screenshot]](https://spotify-betterui.netlify.app/#)
 
 ### Built With
 
